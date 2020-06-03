@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import FormInput from "../FormInput/FormInput";
+import CustomButton from "../CustomButton/CustomButton";
+import { loginWithGoogle } from "../../firebase/firebase.utils";
 
 export default function Login() {
   const [formState, setFormState] = useState({
@@ -16,7 +18,6 @@ export default function Login() {
   function handleChange(event) {
     const { name, value } = event.target;
     setFormState({
-      ...formState,
       [name]: value,
     });
   }
@@ -24,7 +25,7 @@ export default function Login() {
   return (
     <div className="login">
       <h2>I already have an account</h2>
-      <span>Sign in with your email and password</span>
+      <span>Login with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -43,7 +44,8 @@ export default function Login() {
           label="password"
           required
         />
-        <button>Login</button>
+        <CustomButton type="submit">Login</CustomButton>
+        <CustomButton onClick={loginWithGoogle}>Login with Google</CustomButton>
       </form>
     </div>
   );
