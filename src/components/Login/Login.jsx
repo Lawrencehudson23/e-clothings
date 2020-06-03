@@ -18,6 +18,7 @@ export default function Login() {
   function handleChange(event) {
     const { name, value } = event.target;
     setFormState({
+      ...formState,
       [name]: value,
     });
   }
@@ -44,8 +45,12 @@ export default function Login() {
           label="password"
           required
         />
-        <CustomButton type="submit">Login</CustomButton>
-        <CustomButton onClick={loginWithGoogle}>Login with Google</CustomButton>
+        <div className="buttons">
+          <CustomButton type="submit">Login</CustomButton>
+          <CustomButton onClick={loginWithGoogle} isGoogleSignIn>
+            Login with Google
+          </CustomButton>
+        </div>
       </form>
     </div>
   );
