@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.scss";
+import FormInput from "../FormInput/FormInput";
 
 export default function Login() {
   const [formState, setFormState] = useState({
@@ -21,12 +22,12 @@ export default function Login() {
   }
 
   return (
-    <div className="sign-in">
+    <div className="login">
       <h2>I already have an account</h2>
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
-        <input
+        <FormInput
           name="email"
           type="email"
           value={formState.email}
@@ -34,8 +35,7 @@ export default function Login() {
           label="email"
           required
         />
-        <label>Email</label>
-        <input
+        <FormInput
           name="password"
           type="password"
           value={formState.password}
@@ -43,8 +43,6 @@ export default function Login() {
           label="password"
           required
         />
-        <label>Password</label>
-
         <button>Login</button>
       </form>
     </div>
