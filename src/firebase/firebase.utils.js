@@ -9,8 +9,8 @@ const config = {
   projectId: "e-clothing-db-99ba3",
   storageBucket: "e-clothing-db-99ba3.appspot.com",
   messagingSenderId: "742988137112",
-  appId: "1:742988137112:web:8aeb4366aa7c3991e486ed",
-  measurementId: "G-WTXTCRTC9D",
+  appId: "1:742988137112:web:019ebab61b8d48f0e486ed",
+  measurementId: "G-BSR2VD2FL7",
 };
 firebase.initializeApp(config);
 

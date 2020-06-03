@@ -12,12 +12,37 @@
     font-family: 'Open Sans Condensed';
     font-weight: bolder;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: all .2s;
+    overflow: hidden;
+
 
     &:hover {
         background-color: white;
         color: black;
         border: 1px solid black;
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba(#000, 0.2);
+    }
+
+    &.google-sign-in {
+        background-color: #4285f4;
+        color: #fff;
+
+        &:hover {
+            background-color: #357ae8;
+            border: none;
+        }
     }
 }
