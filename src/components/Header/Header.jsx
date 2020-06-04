@@ -29,7 +29,7 @@ const Header = ({ currentUser }) => (
     </div>
   </div>
 );
-//NOTE: this naming can be anything but mapStateToProps is standard with redux codebases
+//NOTE: this naming can be anything but mapStateToProps is standard with redux code bases
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
