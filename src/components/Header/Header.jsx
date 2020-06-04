@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import { connect } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import "./Header.scss";
@@ -33,4 +34,4 @@ const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
 //connect is a higher component
-export default connect()(Header);
+export default connect(mapStateToProps)(Header);
