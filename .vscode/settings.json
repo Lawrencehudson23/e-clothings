@@ -2,6 +2,7 @@
     "cSpell.words": [
         "SETSTATE",
         "appspot",
-        "firestore"
+        "firestore",
+        "middlewares"
     ]
 }
