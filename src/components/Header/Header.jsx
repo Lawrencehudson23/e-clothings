@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import CartIcon from "../CartIcon/CartIcon";
 import { connect } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import "./Header.scss";
-import { ReactComponent as Logo } from "../../assets/original.svg";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+import CartDropDown from "../CartDropDown/CartDropDown";
 const Header = ({ currentUser }) => (
   <div className="header">
     <Link className="logo-container" to="/">
@@ -26,7 +27,10 @@ const Header = ({ currentUser }) => (
           Login
         </Link>
       )}
+
+      <CartIcon />
     </div>
+    <CartDropDown />
   </div>
 );
 //NOTE: this naming can be anything but mapStateToProps is standard with redux code bases
