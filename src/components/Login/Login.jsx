@@ -46,9 +46,9 @@ export default function Login() {
           required
         />
         <div className="buttons">
-          <CustomButton type="submit">Login</CustomButton>
+          <CustomButton type="submit">Sign In</CustomButton>
           <CustomButton onClick={loginWithGoogle} isGoogleSignIn>
-            Login with Google
+            Sign in with Google
           </CustomButton>
         </div>
       </form>
