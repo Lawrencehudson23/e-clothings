@@ -1,5 +1,4 @@
 import { createSelector } from "reselect";
-import { connectAdvanced } from "react-redux";
 //NOTE: INPUT SELECTOR
 const selectCart = (state) => state.cart;
 //output selector
