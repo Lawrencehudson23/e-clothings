@@ -1,40 +1,41 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CartIcon from "../CartIcon/CartIcon";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { auth } from "../../firebase/firebase.utils";
-import "./Header.scss";
+// import "./Header.scss";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import CartDropDown from "../CartDropDown/CartDropDown";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
-const Header = ({ currentUser, hidden }) => (
-  <div className="header">
-    <Link className="logo-container" to="/">
-      <Logo className="logo" />
-    </Link>
-    <div className="options">
-      <Link className="option" to="/shop">
-        SHOP
-      </Link>
-      <Link className="option" to="/shop">
-        CONTACT
-      </Link>
-      {currentUser ? (
-        <div className="option" onClick={() => auth.signOut()}>
-          Log Out
-        </div>
-      ) : (
-        <Link className="option" to="/login">
-          Login
-        </Link>
-      )}
 
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink,
+} from "./Header.styles";
+
+const Header = ({ currentUser, hidden }) => (
+  <HeaderContainer>
+    <LogoContainer to="/">
+      <Logo className="logo" />
+    </LogoContainer>
+    <OptionsContainer>
+      <OptionLink to="/shop">SHOP</OptionLink>
+      <OptionLink to="/shop">CONTACT</OptionLink>
+      {currentUser ? (
+        <OptionLink as="div" onClick={() => auth.signOut()}>
+          Log Out
+        </OptionLink>
+      ) : (
+        <OptionLink to="/login">Login</OptionLink>
+      )}
+      ul>li
       <CartIcon />
-    </div>
+    </OptionsContainer>
     {!hidden && <CartDropDown />}
-  </div>
+  </HeaderContainer>
 );
 //NOTE: this naming can be anything but mapStateToProps is standard with redux code bases
 const mapStateToProps = createStructuredSelector({
