@@ -1,9 +1,20 @@
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Couture Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Couture Bold'), url('couture-bld.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Couture Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Couture Bold Italic'), url('couture-bldit.woff') format('woff');
 }
 
 body {
-  font-family: "Open Sans Condensed";
+  font-family: "Couture Bold";
   padding: 20px 60px;
 }
 
