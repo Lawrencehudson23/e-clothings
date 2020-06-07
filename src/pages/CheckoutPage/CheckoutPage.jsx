@@ -33,7 +33,10 @@ const CheckoutPage = ({ cartItems, total }) => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <div className="total">
-        <span>Total ${total}</span>
+        <h6>
+          Total <span className="dollar">$</span>
+          {total}
+        </h6>
       </div>
       <div className="test-warning">
         *Please use the following test credit card for payments*
