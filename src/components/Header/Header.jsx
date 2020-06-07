@@ -31,7 +31,7 @@ const Header = ({ currentUser, hidden }) => (
       ) : (
         <OptionLink to="/login">Login</OptionLink>
       )}
-      ul>li
+
       <CartIcon />
     </OptionsContainer>
     {!hidden && <CartDropDown />}
