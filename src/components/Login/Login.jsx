@@ -4,14 +4,15 @@ import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 import { loginWithGoogle, auth } from "../../firebase/firebase.utils";
 
-export default function Login() {
+const Login = () => {
   const [formState, setFormState] = useState({
     email: "",
     password: "",
   });
+  const { email, password } = formState;
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { email, password } = formState;
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
@@ -38,7 +39,7 @@ export default function Login() {
         <FormInput
           name="email"
           type="email"
-          value={formState.email}
+          value={email}
           onChange={handleChange}
           label="email"
           required
@@ -46,7 +47,7 @@ export default function Login() {
         <FormInput
           name="password"
           type="password"
-          value={formState.password}
+          value={password}
           onChange={handleChange}
           label="password"
           required
@@ -60,4 +61,5 @@ export default function Login() {
       </form>
     </div>
   );
-}
+};
+export default Login;
