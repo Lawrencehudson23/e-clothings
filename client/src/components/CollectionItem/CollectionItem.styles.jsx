@@ -72,7 +72,8 @@ export const NameContainer = styled.span`
 `;
 export const DollarContainer = styled.span`
   font-size: 12px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 700;
 `;
 export const PriceContainer = styled.span`
