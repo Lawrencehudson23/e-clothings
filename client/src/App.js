@@ -15,7 +15,7 @@ import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 import { GlobalStyle } from "./global.styles";
 
-const App = ({ setCurrentUser }) => {
+const App = ({ currentUser, setCurrentUser }) => {
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -49,9 +49,7 @@ const App = ({ setCurrentUser }) => {
         <Route
           exact
           path="/login"
-          render={() =>
-            this.props.currentUser ? <Redirect to="/" /> : <LoginReg />
-          }
+          render={() => (currentUser ? <Redirect to="/" /> : <LoginReg />)}
         />
       </Switch>
     </div>
