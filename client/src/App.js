@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./App.css";
+
 import HomePage from "./pages/HomePage/HomePage";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -12,6 +12,8 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 //NOTE: LESS CODE
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+
+import { GlobalStyle } from "./global.styles";
 
 const App = ({ setCurrentUser }) => {
   useEffect(() => {
@@ -38,6 +40,7 @@ const App = ({ setCurrentUser }) => {
 
   return (
     <div>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
