@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import ShopPage from "./pages/ShopPage/ShopPage";
@@ -13,13 +13,19 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
-const App = ({ setCurrentUser }) => {
-  useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+class App extends React.Component {
+  unsubscribeFromAuth = null;
+
+  //NOTE: save data to firebase
+  componentDidMount() {
+    const { setCurrentUser } = this.props;
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot((snapShot) => {
+          // console.log(snapShot.data());
+
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data(),
@@ -29,31 +35,31 @@ const App = ({ setCurrentUser }) => {
 
       setCurrentUser(userAuth);
     });
+  }
 
-    //NOTE: mimic componentWillUnMount
-    return () => {
-      unsubscribeFromAuth();
-    };
-  }, []);
-
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/shop" component={ShopPage} />
-        <Route exact path="/checkout" component={CheckoutPage} />
-        <Route
-          exact
-          path="/login"
-          render={() =>
-            this.props.currentUser ? <Redirect to="/" /> : <LoginReg />
-          }
-        />
-      </Switch>
-    </div>
-  );
-};
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+  render() {
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              this.props.currentUser ? <Redirect to="/" /> : <LoginReg />
+            }
+          />
+        </Switch>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state) =>
   createStructuredSelector({
