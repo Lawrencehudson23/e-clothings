@@ -32,7 +32,10 @@ export const HeaderBlockContainer = styled.div`
     width: 22%;
   }
   span {
-    font-size: 10px;
+    font-size: 12px;
+    @media screen and (max-width: 800px) {
+      font-size: 10px;
+    }
   }
 
   &:last-child {
@@ -52,12 +55,13 @@ export const TotalContainer = styled.div`
 
 export const DollarContainer = styled.span`
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
 
 export const TestWarningContainer = styled.div`
   text-align: center;
   margin-top: 40px;
-  font-size: 24px;
+  font-size: 15px;
   color: red;
 `;

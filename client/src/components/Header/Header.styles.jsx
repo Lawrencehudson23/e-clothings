@@ -8,11 +8,13 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  font-size: 16px;
 
   @media screen and (max-width: 800px) {
     height: 60px;
     padding: 10px;
     margin-bottom: 20px;
+    font-size: 13px;
   }
 `;
 
@@ -34,7 +36,7 @@ export const OptionsContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   @media screen and (max-width: 800px) {
-    width: 80%;
+    width: 70%;
   }
 `;
 
