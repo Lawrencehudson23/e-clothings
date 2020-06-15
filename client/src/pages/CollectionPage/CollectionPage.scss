@@ -1,6 +1,7 @@
 .collection-page {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     .title {
         font-size: 25px;
@@ -16,6 +17,11 @@
 
         & .collection-item {
             margin-bottom: 30px;
+        }
+
+        @media screen and (max-width: 800px) {
+            grid-template-column: 1fr 1fr;
+            grid-gap: 15px;
         }
     }
 }

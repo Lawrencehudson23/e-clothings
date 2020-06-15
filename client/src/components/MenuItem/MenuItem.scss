@@ -10,6 +10,11 @@
     position: relative;
     overflow: hidden;
 
+    //media query always have higher specificity than anything else inside, overwrite
+    @media screen and(max-width:800px) {
+        height: 200px;
+    }
+
     &:hover {
         cursor: pointer;
 
@@ -40,7 +45,6 @@
         height: 100%;
         background-position: center;
         background-size: cover;
-
     }
 
     .content {

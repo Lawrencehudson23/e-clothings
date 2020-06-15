@@ -1,6 +1,4 @@
 import React from "react";
-// import "./CollectionItem.scss";
-import CustomButton from "../CustomButton/CustomButton";
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
 import {
@@ -10,6 +8,7 @@ import {
   NameContainer,
   PriceContainer,
   DollarContainer,
+  AddButton,
 } from "./CollectionItem.styles";
 
 const CollectionItem = ({ item, addItem }) => {
@@ -24,9 +23,9 @@ const CollectionItem = ({ item, addItem }) => {
           {price}
         </PriceContainer>
       </CollectionFooterContainer>
-      <CustomButton onClick={() => addItem(item)} inverted>
+      <AddButton onClick={() => addItem(item)} inverted>
         Add to cart
-      </CustomButton>
+      </AddButton>
     </CollectionItemContainer>
   );
 };
