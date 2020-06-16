@@ -2,7 +2,11 @@
     "cSpell.words": [
         "SETSTATE",
         "appspot",
+        "create",
+        "create structured selector",
         "firestore",
-        "middlewares"
+        "middlewares",
+        "selector",
+        "structured"
     ]
 }
