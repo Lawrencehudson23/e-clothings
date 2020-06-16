@@ -10,7 +10,8 @@ export const LoginRegContainer = styled.div`
     flex-direction: column;
     width: unset;
     align-items: center;
-    > *:first-child {
+    padding: 10px;
+    *:first-child {
       margin-bottom: 50px;
     }
   }
