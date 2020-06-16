@@ -1,11 +1,10 @@
 import React from "react";
-
 import { connect } from "react-redux";
 import { clearCart } from "../../redux/cart/cart.actions";
 
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
-const StripeCheckoutButton = ({ price, clearItemsFromCart, history }) => {
+const StripeCheckoutButton = ({ price, clearItemsFromCart }) => {
   const priceForStripe = price * 100;
   //NOTE: key get from stripe site
   const publishableKey =
