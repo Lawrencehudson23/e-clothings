@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import CartIcon from "./CartIcon";
+import { CartIcon } from "./CartIcon";
 
-describe.skip("CartIcon component", () => {
+describe("CartIcon component", () => {
   let wrapper;
   let mockToggleCartHidden;
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe.skip("CartIcon component", () => {
   });
 
   it("should render CartIcon component", () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it("should call toggleCartHidden when icon is clicked", () => {
