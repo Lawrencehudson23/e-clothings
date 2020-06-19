@@ -4,6 +4,7 @@
         "appspot",
         "create",
         "create structured selector",
+        "displayname",
         "firestore",
         "middlewares",
         "selector",
