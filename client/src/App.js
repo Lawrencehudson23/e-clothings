@@ -6,37 +6,37 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Header from "./components/Header/Header";
 import LoginReg from "./pages/LoginReg/LoginReg";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { setCurrentUser } from "./redux/user/user.actions";
 //NOTE: LESS CODE
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 import { GlobalStyle } from "./global.styles";
 
-const App = ({ currentUser, setCurrentUser }) => {
+const App = ({ setCurrentUser, currentUser }) => {
+  // const unsubscribeFromAuth = null;
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+    // const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      }
+    //     userRef.onSnapshot((snapShot) => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data(),
+    //       });
+    //     });
+    //   }
 
-      setCurrentUser(userAuth);
-    });
+    //   setCurrentUser(userAuth);
+    // });
 
     //NOTE: mimic componentWillUnMount
     return () => {
-      unsubscribeFromAuth();
+      // unsubscribeFromAuth = null;
     };
-  }, [setCurrentUser]);
+  }, [currentUser]);
 
   return (
     <div>
@@ -56,10 +56,9 @@ const App = ({ currentUser, setCurrentUser }) => {
   );
 };
 
-const mapStateToProps = (state) =>
-  createStructuredSelector({
-    currentUser: selectCurrentUser,
-  });
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
