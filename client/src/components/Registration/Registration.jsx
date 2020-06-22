@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Registration.scss";
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
@@ -12,9 +12,7 @@ const Registration = () => {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState([]);
-  useEffect(() => {
-    setErrors([]);
-  }, errors);
+
   const { displayName, email, password, confirmPassword } = userCredentials;
 
   const handleSubmit = async (e) => {
