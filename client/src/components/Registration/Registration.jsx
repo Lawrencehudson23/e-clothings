@@ -3,7 +3,6 @@ import "./Registration.scss";
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-// import { auth, createUserProfileDocument } from "../firebase/firebase.utils";
 
 const Registration = () => {
   const [userCredentials, setUserCredentials] = useState({
@@ -12,17 +11,18 @@ const Registration = () => {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState([]);
 
   const { displayName, email, password, confirmPassword } = userCredentials;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setErrors([]);
+    const newErrors = [];
     const { displayName, email, password, confirmPassword } = userCredentials;
 
     if (password !== confirmPassword) {
-      alert("passwords don't match!");
-      return;
+      newErrors.push("Passwords don't match!");
     }
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -37,8 +37,9 @@ const Registration = () => {
         confirmPassword: "",
       });
     } catch (error) {
-      console.log(error);
+      newErrors.push(error.message);
     }
+    setErrors(newErrors);
   };
 
   const handleChange = (e) => {
@@ -53,6 +54,13 @@ const Registration = () => {
     <div className="registration">
       <h2 className="title">I do not have an account</h2>
       <span>Sign up with your email and password</span>
+      {errors
+        ? errors.map((error, key) => (
+            <span style={{ color: "red" }} key={key}>
+              {error}
+            </span>
+          ))
+        : ""}
       <form className="registration-form" onSubmit={handleSubmit}>
         <FormInput
           type="text"

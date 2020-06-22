@@ -9,6 +9,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [error, setError] = useState("");
+
   const { email, password } = formState;
 
   const handleSubmit = async (event) => {
@@ -19,6 +22,7 @@ const Login = () => {
       setFormState({ email: "", password: "" });
     } catch (error) {
       console.log(error);
+      setError("The email or password you have entered is invalid.");
     }
   };
 
@@ -36,6 +40,7 @@ const Login = () => {
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
+        {error ? <span style={{ color: "red" }}>{error}</span> : ""}
         <FormInput
           name="email"
           type="email"
