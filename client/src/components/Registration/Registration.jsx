@@ -25,9 +25,7 @@ const Registration = ({ signUpStart }) => {
 
     if (password !== confirmPassword) {
       newErrors.push("Passwords don't match!");
-    }
-    if (password.length < 6 || confirmPassword.length < 6) {
-      newErrors.push("Password must be at least 6 characters.");
+      return;
     }
     signUpStart({ displayName, email, password });
     setErrors(newErrors);
