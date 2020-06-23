@@ -7,32 +7,31 @@ import { connect } from "react-redux";
 import Header from "./components/Header/Header";
 import LoginReg from "./pages/LoginReg/LoginReg";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import { setCurrentUser } from "./redux/user/user.actions";
 //NOTE: LESS CODE
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 import { GlobalStyle } from "./global.styles";
 
-const App = ({ setCurrentUser, currentUser }) => {
-  // const unsubscribeFromAuth = null;
+const App = ({ currentUser }) => {
+  const unsubscribeFromAuth = null;
   useEffect(() => {
-    // const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-    //   if (userAuth) {
-    //     const userRef = await createUserProfileDocument(userAuth);
+    //   // const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   //   if (userAuth) {
+    //   //     const userRef = await createUserProfileDocument(userAuth);
 
-    //     userRef.onSnapshot((snapShot) => {
-    //       setCurrentUser({
-    //         id: snapShot.id,
-    //         ...snapShot.data(),
-    //       });
-    //     });
-    //   }
+    //   //     userRef.onSnapshot((snapShot) => {
+    //   //       setCurrentUser({
+    //   //         id: snapShot.id,
+    //   //         ...snapShot.data(),
+    //   //       });
+    //   //     });
+    //   //   }
 
-    //   setCurrentUser(userAuth);
-    // });
+    //   //   setCurrentUser(userAuth);
+    //   // });
 
-    //NOTE: mimic componentWillUnMount
+    //   //NOTE: mimic componentWillUnMount
     return () => {
       // unsubscribeFromAuth = null;
     };
@@ -60,8 +59,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
