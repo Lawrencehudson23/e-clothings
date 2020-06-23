@@ -10,27 +10,27 @@ import {
 
 import "./Login.scss";
 const Login = ({ googleSignInStart, emailSignInStart }) => {
-  const [formState, setFormState] = useState({
+  const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
   });
 
   const [error, setError] = useState("");
 
-  const { email, password } = formState;
+  const { email, password } = userCredentials;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { email, password } = formState;
+    const { email, password } = userCredentials;
 
     emailSignInStart(email, password);
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormState({
-      ...formState,
+    setUserCredentials({
+      ...userCredentials,
       [name]: value,
     });
   };
