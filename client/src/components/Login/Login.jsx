@@ -6,6 +6,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import {
   googleSignInStart,
   emailSignInStart,
+  signInFailure,
 } from "../../redux/user/user.actions";
 
 import "./Login.scss";
@@ -23,7 +24,9 @@ const Login = ({ googleSignInStart, emailSignInStart }) => {
     event.preventDefault();
 
     const { email, password } = userCredentials;
-
+    if (signInFailure) {
+      setError("Email or password you have entered is invalid.");
+    }
     emailSignInStart(email, password);
   };
 
