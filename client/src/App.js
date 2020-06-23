@@ -37,7 +37,7 @@ const App = ({ currentUser, checkUserSession }) => {
     return () => {
       // unsubscribeFromAuth = null;
     };
-  }, [currentUser]);
+  }, [checkUserSession]);
 
   return (
     <div>

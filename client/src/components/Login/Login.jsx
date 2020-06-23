@@ -25,14 +25,6 @@ const Login = ({ googleSignInStart, emailSignInStart }) => {
     const { email, password } = formState;
 
     emailSignInStart(email, password);
-
-    // try {
-    //   await auth.signInWithEmailAndPassword(email, password);
-    //   setFormState({ email: "", password: "" });
-    // } catch (error) {
-    //   console.log(error);
-    //   setError("The email or password you have entered is invalid.");
-    // }
   };
 
   const handleChange = (event) => {
