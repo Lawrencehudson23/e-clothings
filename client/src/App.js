@@ -10,12 +10,14 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 //NOTE: LESS CODE
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
-
+import { checkUserSession } from "./redux/user/user.actions";
 import { GlobalStyle } from "./global.styles";
 
-const App = ({ currentUser }) => {
-  const unsubscribeFromAuth = null;
+const App = ({ currentUser, checkUserSession }) => {
+  // const unsubscribeFromAuth = null;
   useEffect(() => {
+    checkUserSession();
+
     //   // const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
     //   //   if (userAuth) {
     //   //     const userRef = await createUserProfileDocument(userAuth);
@@ -59,4 +61,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
