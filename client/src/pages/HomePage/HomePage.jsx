@@ -3,9 +3,11 @@ import Directory from "../../components/Directory/Directory";
 // import "./HomePage.scss";
 import { HomePageContainer } from "./HomePage.styles";
 
-const HomePage = () => (
-  <HomePageContainer>
-    <Directory />
-  </HomePageContainer>
-);
+const HomePage = () => {
+  return (
+    <HomePageContainer>
+      <Directory />
+    </HomePageContainer>
+  );
+};
 export default HomePage;
